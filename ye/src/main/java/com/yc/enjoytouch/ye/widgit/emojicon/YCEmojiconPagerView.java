@@ -9,9 +9,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
-import com.yc.enjoytouch.ye.R;
 import com.yc.enjoytouch.ye.adapter.EmojiconGridAdapter;
 import com.yc.enjoytouch.ye.adapter.EmojiconPagerAdapter;
+import com.yc.enjoytouch.ye.utils.IdUtil;
 import com.yc.enjoytouch.ye.utils.YCEmojicon;
 import com.yc.enjoytouch.ye.utils.YCEmojiconGroupEntity;
 import com.yc.enjoytouch.ye.utils.YCSmileUtils;
@@ -116,8 +116,8 @@ public class YCEmojiconPagerView extends ViewPager {
         int pageSize = totalSize % itemSize == 0 ? totalSize/itemSize : totalSize/itemSize + 1;   
         List<View> views = new ArrayList<View>();
         for(int i = 0; i < pageSize; i++){
-            View view = View.inflate(context, R.layout.expression_gridview, null);
-            GridView gv = (GridView) view.findViewById(R.id.gridview);
+            View view = View.inflate(context, IdUtil.getIdByName(context,"layout","expression_gridview"), null);
+            GridView gv = (GridView) view.findViewById(IdUtil.getIdByName(context,"id","gridview"));
             if(emojiType == YCEmojicon.Type.BIG_EXPRESSION){
                 gv.setNumColumns(bigEmojiconColumns);
             }else{

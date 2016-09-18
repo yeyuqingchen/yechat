@@ -10,26 +10,20 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.RelativeLayout;
 
-import com.yc.enjoytouch.ye.R;
 import com.yc.enjoytouch.ye.helper.YChelper;
+import com.yc.enjoytouch.ye.utils.IdUtil;
 import com.yc.enjoytouch.ye.utils.PathUtil;
 import com.yc.enjoytouch.ye.utils.YCEmojicon;
-import com.yc.enjoytouch.ye.utils.YCEmojiconGroupEntity;
-import com.yc.enjoytouch.ye.utils.YCSmileUtils;
 import com.yc.enjoytouch.ye.widgit.YCChatExtendMenu;
 import com.yc.enjoytouch.ye.widgit.YCChatInputMenu;
 import com.yc.enjoytouch.ye.widgit.YCTitleBar;
 import com.yc.enjoytouch.ye.widgit.YCVoiceRecorderView;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class ChatBaseActivity extends FragmentActivity {
-    protected static final int REQUEST_CODE_MAP = 1;
-    protected static final int REQUEST_CODE_CAMERA = 2;
-    protected static final int REQUEST_CODE_LOCAL = 3;
 
     protected YCChatInputMenu inputMenu;
 
@@ -43,11 +37,14 @@ public abstract class ChatBaseActivity extends FragmentActivity {
 
     protected MyItemClickListener extendMenuItemClickListener;
 
+    protected RelativeLayout list_container;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat_base);
+//        setContentView(R.layout.activity_chat_base);
+        setContentView(IdUtil.getIdByName(this,"layout","activity_chat_base"));
         PathUtil.getInstance().initDirs(null, YChelper.getyChelper(this).currentUsername,this);
         initView();
         wantToDo();
@@ -57,32 +54,42 @@ public abstract class ChatBaseActivity extends FragmentActivity {
 
 
 
-    //img_Res 资源   name 标识
-    protected void addEmojiconList(List<YCEmojicon> emojiconList){
-        if (emojiconList==null) {
-            inputMenu.init();
-            return;
-        }
-        List<YCEmojiconGroupEntity> emojiconGroupList=new ArrayList<>();
-        for (int i=0;i<emojiconList.size();i++) {
-            YCSmileUtils.addPattern(emojiconList.get(i).getEmojiText(),emojiconList.get(i).getIcon());
-        }
-        YCEmojiconGroupEntity ycEmojiconGroupEntity=new YCEmojiconGroupEntity();
-        ycEmojiconGroupEntity.setIcon(emojiconList.get(0).getIcon());
-        ycEmojiconGroupEntity.setName(emojiconList.get(0).getEmojiText());
-        ycEmojiconGroupEntity.setEmojiconList(emojiconList);
-        emojiconGroupList.add(ycEmojiconGroupEntity);
-        inputMenu.init(emojiconGroupList);
-    }
+//    //img_Res 资源   name 标识
+//    protected void addEmojiconList(List<YCEmojicon> emojiconList){
+//        if (emojiconList==null) {
+//            inputMenu.init();
+//            return;
+//        }
+//        List<YCEmojiconGroupEntity> emojiconGroupList=new ArrayList<>();
+//        for (int i=0;i<emojiconList.size();i++) {
+//            YCSmileUtils.addPattern(emojiconList.get(i).getEmojiText(),emojiconList.get(i).getIcon());
+//        }
+//        YCEmojiconGroupEntity ycEmojiconGroupEntity=new YCEmojiconGroupEntity();
+//        ycEmojiconGroupEntity.setIcon(emojiconList.get(0).getIcon());
+//        ycEmojiconGroupEntity.setName(emojiconList.get(0).getEmojiText());
+//        ycEmojiconGroupEntity.setEmojiconList(emojiconList);
+//        emojiconGroupList.add(ycEmojiconGroupEntity);
+//        inputMenu.init(emojiconGroupList);
+//    }
 
     /**
      * init view
      */
     protected void initView() {
-        voiceRecorderView = (YCVoiceRecorderView)findViewById(R.id.voice_recorder);
-        titleBar= (YCTitleBar) findViewById(R.id.title_bar);
+//        list_container= (RelativeLayout) findViewById(R.id.list_container);
+        list_container= (RelativeLayout) findViewById(IdUtil.getIdByName(this,"id","list_container"));
+
+//        voiceRecorderView = (YCVoiceRecorderView)findViewById(R.id.voice_recorder);
+        voiceRecorderView = (YCVoiceRecorderView)findViewById(IdUtil.getIdByName(this,"id","voice_recorder"));
+
+//        titleBar= (YCTitleBar) findViewById(R.id.title_bar);
+        titleBar= (YCTitleBar) findViewById(IdUtil.getIdByName(this,"id","title_bar"));
+
         extendMenuItemClickListener = new MyItemClickListener();
-        inputMenu = (YCChatInputMenu)findViewById(R.id.input_menu);
+
+//        inputMenu = (YCChatInputMenu)findViewById(R.id.input_menu);
+        inputMenu = (YCChatInputMenu)findViewById(IdUtil.getIdByName(this,"id","input_menu"));
+
         inputMenu.setChatInputMenuListener(new YCChatInputMenu.ChatInputMenuListener() {
             @Override
             public void onSendMessage(String content) {

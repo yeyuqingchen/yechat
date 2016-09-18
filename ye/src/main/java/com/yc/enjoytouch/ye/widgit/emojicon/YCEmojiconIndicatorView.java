@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.yc.enjoytouch.ye.R;
 import com.yc.enjoytouch.ye.utils.DensityUtil;
+import com.yc.enjoytouch.ye.utils.IdUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +44,8 @@ public class YCEmojiconIndicatorView extends LinearLayout{
     private void init(Context context, AttributeSet attrs){
         this.context = context;
         dotHeight = DensityUtil.dip2px(context, dotHeight);
-        selectedBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.ease_dot_emojicon_selected);
-        unselectedBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.ease_dot_emojicon_unselected);
+        selectedBitmap = BitmapFactory.decodeResource(context.getResources(), IdUtil.getIdByName(context,"drawable","ease_dot_emojicon_selected"));
+        unselectedBitmap = BitmapFactory.decodeResource(context.getResources(), IdUtil.getIdByName(context,"drawable","ease_dot_emojicon_unselected"));
         setGravity(Gravity.CENTER_HORIZONTAL);
     }
     

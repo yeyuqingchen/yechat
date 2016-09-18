@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.yc.enjoytouch.ye.R;
+import com.yc.enjoytouch.ye.utils.IdUtil;
 import com.yc.enjoytouch.ye.utils.YCEmojicon;
 import com.yc.enjoytouch.ye.utils.YCSmileUtils;
 
@@ -27,20 +27,20 @@ public class EmojiconGridAdapter extends ArrayAdapter<YCEmojicon>{
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null){
             if(emojiconType == YCEmojicon.Type.BIG_EXPRESSION){
-                convertView = View.inflate(getContext(), R.layout.row_big_expression, null);
+                convertView = View.inflate(getContext(), IdUtil.getIdByName(getContext(),"layout","row_big_expression"), null);
             }else{
-                convertView = View.inflate(getContext(), R.layout.row_expression, null);
+                convertView = View.inflate(getContext(), IdUtil.getIdByName(getContext(),"layout","row_expression"), null);
             }
         }
         
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_expression);
-        TextView textView = (TextView) convertView.findViewById(R.id.tv_name);
+        ImageView imageView = (ImageView) convertView.findViewById(IdUtil.getIdByName(getContext(),"id","iv_expression"));
+        TextView textView = (TextView) convertView.findViewById(IdUtil.getIdByName(getContext(),"id","tv_name"));
         YCEmojicon emojicon = getItem(position);
         if(textView != null && emojicon.getName() != null){
             textView.setText(emojicon.getName());
         }
         if(YCSmileUtils.DELETE_KEY.equals(emojicon.getEmojiText())){
-            imageView.setImageResource(R.drawable.ease_delete_expression);
+            imageView.setImageResource(IdUtil.getIdByName(getContext(),"drawable","ease_delete_expression"));
         }else{
             if(emojicon.getIcon() != 0){
                 imageView.setImageResource(emojicon.getIcon());

@@ -15,8 +15,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.yc.enjoytouch.ye.R;
 import com.yc.enjoytouch.ye.bean.YCVoiceRecorder;
+import com.yc.enjoytouch.ye.utils.IdUtil;
 import com.yc.enjoytouch.ye.utils.YCCommonUtils;
 
 
@@ -59,28 +59,34 @@ public class YCVoiceRecorderView extends RelativeLayout {
 
     private void init(Context context) {
         this.context = context;
-        LayoutInflater.from(context).inflate(R.layout.widget_voice_recorder, this);
+//        LayoutInflater.from(context).inflate(R.layout.widget_voice_recorder, this);
+        LayoutInflater.from(context).inflate(IdUtil.getIdByName(context,"layout","widget_voice_recorder"), this);
 
-        micImage = (ImageView) findViewById(R.id.mic_image);
-        recordingHint = (TextView) findViewById(R.id.recording_hint);
+
+//        micImage = (ImageView) findViewById(R.id.mic_image);
+        micImage = (ImageView) findViewById(IdUtil.getIdByName(context,"id","mic_image"));
+
+
+//        recordingHint = (TextView) findViewById(R.id.recording_hint);
+        recordingHint = (TextView) findViewById(IdUtil.getIdByName(context,"id","recording_hint"));
 
         voiceRecorder = new YCVoiceRecorder(micImageHandler);
 
         // 动画资源文件,用于录制语音时
-        micImages = new Drawable[] { getResources().getDrawable(R.drawable.ease_record_animate_01),
-                getResources().getDrawable(R.drawable.ease_record_animate_02),
-                getResources().getDrawable(R.drawable.ease_record_animate_03),
-                getResources().getDrawable(R.drawable.ease_record_animate_04),
-                getResources().getDrawable(R.drawable.ease_record_animate_05),
-                getResources().getDrawable(R.drawable.ease_record_animate_06),
-                getResources().getDrawable(R.drawable.ease_record_animate_07),
-                getResources().getDrawable(R.drawable.ease_record_animate_08),
-                getResources().getDrawable(R.drawable.ease_record_animate_09),
-                getResources().getDrawable(R.drawable.ease_record_animate_10),
-                getResources().getDrawable(R.drawable.ease_record_animate_11),
-                getResources().getDrawable(R.drawable.ease_record_animate_12),
-                getResources().getDrawable(R.drawable.ease_record_animate_13),
-                getResources().getDrawable(R.drawable.ease_record_animate_14), };
+        micImages = new Drawable[] { getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_01")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_02")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_03")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_04")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_05")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_06")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_07")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_08")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_09")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_10")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_11")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_12")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_13")),
+                getResources().getDrawable(IdUtil.getIdByName(context,"drawable","ease_record_animate_14")), };
 
         wakeLock = ((PowerManager) context.getSystemService(Context.POWER_SERVICE)).newWakeLock(
                 PowerManager.SCREEN_DIM_WAKE_LOCK, "demo");
@@ -177,7 +183,7 @@ public class YCVoiceRecorderView extends RelativeLayout {
 
     public void showReleaseToCancelHint() {
         recordingHint.setText("上滑取消");
-        recordingHint.setBackgroundResource(R.drawable.ease_recording_text_hint_bg);
+        recordingHint.setBackgroundResource(IdUtil.getIdByName(context,"drawable","ease_recording_text_hint_bg"));
     }
 
     public void showMoveUpToCancelHint() {

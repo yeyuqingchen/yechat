@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.yc.enjoytouch.ye.R;
+import com.yc.enjoytouch.ye.utils.IdUtil;
 
 
 /**
@@ -52,18 +52,18 @@ public class YCChatPrimaryMenu extends YCChatPrimaryMenuBase implements OnClickL
 
     private void init(final Context context, AttributeSet attrs) {
         this.context = context;
-        LayoutInflater.from(context).inflate(R.layout.widget_chat_primary_menu, this);
-        editText = (EditText) findViewById(R.id.et_sendmessage);
-        buttonSetModeKeyboard = findViewById(R.id.btn_set_mode_keyboard);
-        edittext_layout = (RelativeLayout) findViewById(R.id.edittext_layout);
-        buttonSetModeVoice = findViewById(R.id.btn_set_mode_voice);
-        buttonSend = findViewById(R.id.btn_send);
-        buttonPressToSpeak = findViewById(R.id.btn_press_to_speak);
-        faceNormal = (ImageView) findViewById(R.id.iv_face_normal);
-        faceChecked = (ImageView) findViewById(R.id.iv_face_checked);
-        faceLayout = (RelativeLayout) findViewById(R.id.rl_face);
-        buttonMore = (Button) findViewById(R.id.btn_more);
-        edittext_layout.setBackgroundResource(R.drawable.ease_input_bar_bg_normal);
+        LayoutInflater.from(context).inflate(IdUtil.getIdByName(context,"layout","widget_chat_primary_menu"), this);
+        editText = (EditText) findViewById(IdUtil.getIdByName(context,"id","et_sendmessage"));
+        buttonSetModeKeyboard = findViewById(IdUtil.getIdByName(context,"id","btn_set_mode_keyboard"));
+        edittext_layout = (RelativeLayout) findViewById(IdUtil.getIdByName(context,"id","edittext_layout"));
+        buttonSetModeVoice = findViewById(IdUtil.getIdByName(context,"id","btn_set_mode_voice"));
+        buttonSend = findViewById(IdUtil.getIdByName(context,"id","btn_send"));
+        buttonPressToSpeak = findViewById(IdUtil.getIdByName(context,"id","btn_press_to_speak"));
+        faceNormal = (ImageView) findViewById(IdUtil.getIdByName(context,"id","iv_face_normal"));
+        faceChecked = (ImageView) findViewById(IdUtil.getIdByName(context,"id","iv_face_checked"));
+        faceLayout = (RelativeLayout) findViewById(IdUtil.getIdByName(context,"id","rl_face"));
+        buttonMore = (Button) findViewById(IdUtil.getIdByName(context,"id","btn_more"));
+        edittext_layout.setBackgroundResource(IdUtil.getIdByName(context,"drawable","ease_input_bar_bg_normal"));
         
         buttonSend.setOnClickListener(this);
         buttonSetModeKeyboard.setOnClickListener(this);
@@ -78,9 +78,9 @@ public class YCChatPrimaryMenu extends YCChatPrimaryMenuBase implements OnClickL
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    edittext_layout.setBackgroundResource(R.drawable.ease_input_bar_bg_active);
+                    edittext_layout.setBackgroundResource(IdUtil.getIdByName(context,"drawable","ease_input_bar_bg_active"));
                 } else {
-                    edittext_layout.setBackgroundResource(R.drawable.ease_input_bar_bg_normal);
+                    edittext_layout.setBackgroundResource(IdUtil.getIdByName(context,"drawable","ease_input_bar_bg_normal"));
                 }
 
             }
@@ -155,23 +155,23 @@ public class YCChatPrimaryMenu extends YCChatPrimaryMenuBase implements OnClickL
     @Override
     public void onClick(View view){
         int id = view.getId();
-        if (id == R.id.btn_send) {
+        if (id == IdUtil.getIdByName(context,"id","btn_send")) {
             if(listener != null){
                 String s = editText.getText().toString();
                 editText.setText("");
                 listener.onSendBtnClicked(s);
             }
-        } else if (id == R.id.btn_set_mode_voice) {
+        } else if (id == IdUtil.getIdByName(context,"id","btn_set_mode_voice")) {
             setModeVoice();
             showNormalFaceImage();
             if(listener != null)
                 listener.onToggleVoiceBtnClicked();
-        } else if (id == R.id.btn_set_mode_keyboard) {
+        } else if (id == IdUtil.getIdByName(context,"id","btn_set_mode_keyboard")) {
             setModeKeyboard();
             showNormalFaceImage();
             if(listener != null)
                 listener.onToggleVoiceBtnClicked();
-        } else if (id == R.id.btn_more) {
+        } else if (id == IdUtil.getIdByName(context,"id","btn_more")) {
             buttonSetModeVoice.setVisibility(View.VISIBLE);
             buttonSetModeKeyboard.setVisibility(View.GONE);
             edittext_layout.setVisibility(View.VISIBLE);
@@ -179,13 +179,13 @@ public class YCChatPrimaryMenu extends YCChatPrimaryMenuBase implements OnClickL
             showNormalFaceImage();
             if(listener != null)
                 listener.onToggleExtendClicked();
-        } else if (id == R.id.et_sendmessage) {
-            edittext_layout.setBackgroundResource(R.drawable.ease_input_bar_bg_active);
+        } else if (id == IdUtil.getIdByName(context,"id","et_sendmessage")) {
+            edittext_layout.setBackgroundResource(IdUtil.getIdByName(context,"drawable","ease_input_bar_bg_active"));
             faceNormal.setVisibility(View.VISIBLE);
             faceChecked.setVisibility(View.INVISIBLE);
             if(listener != null)
                 listener.onEditTextClicked();
-        } else if (id == R.id.rl_face) {
+        } else if (id == IdUtil.getIdByName(context,"id","rl_face")) {
             toggleFaceImage();
             if(listener != null){
                 listener.onToggleEmojiconClicked();

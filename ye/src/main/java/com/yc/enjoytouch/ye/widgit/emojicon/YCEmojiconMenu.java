@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.yc.enjoytouch.ye.R;
+import com.yc.enjoytouch.ye.utils.IdUtil;
 import com.yc.enjoytouch.ye.utils.YCEmojicon;
 import com.yc.enjoytouch.ye.utils.YCEmojiconGroupEntity;
 
@@ -48,15 +48,15 @@ public class YCEmojiconMenu extends YCEmojiconMenuBase{
 	}
 	
 	private void init(Context context, AttributeSet attrs){
-		LayoutInflater.from(context).inflate(R.layout.widget_emojicon, this);
-		TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.EaseEmojiconMenu);
-		emojiconColumns = ta.getInt(R.styleable.EaseEmojiconMenu_emojiconColumns, defaultColumns);
-		bigEmojiconColumns = ta.getInt(R.styleable.EaseEmojiconMenu_bigEmojiconRows, defaultBigColumns);
+		LayoutInflater.from(context).inflate(IdUtil.getIdByName(context,"layout","widget_emojicon"), this);
+		TypedArray ta = context.obtainStyledAttributes(attrs,IdUtil.getIdsByName(context,"styleable","EaseEmojiconMenu"));
+		emojiconColumns = ta.getInt(IdUtil.getIdByName(context,"styleable","EaseEmojiconMenu_emojiconColumns"), defaultColumns);
+		bigEmojiconColumns = ta.getInt(IdUtil.getIdByName(context,"styleable","EaseEmojiconMenu_bigEmojiconRows"), defaultBigColumns);
 		ta.recycle();
 		
-		pagerView = (YCEmojiconPagerView) findViewById(R.id.pager_view);
-		indicatorView = (YCEmojiconIndicatorView) findViewById(R.id.indicator_view);
-		tabBar = (YCEmojiconScrollTabBar) findViewById(R.id.tab_bar);
+		pagerView = (YCEmojiconPagerView) findViewById(IdUtil.getIdByName(context,"id","pager_view"));
+		indicatorView = (YCEmojiconIndicatorView) findViewById(IdUtil.getIdByName(context,"id","indicator_view"));
+		tabBar = (YCEmojiconScrollTabBar) findViewById(IdUtil.getIdByName(context,"id","tab_bar"));
 		
 	}
 	

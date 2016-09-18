@@ -76,7 +76,7 @@
                 android:background="@null"
                 android:maxLines="3"
                 android:minHeight="40dp"
-                android:paddingBottom="3dp"
+                android:paddingBottom="10dp"
                 android:paddingLeft="1dp"
                 android:paddingRight="1dp"
                 android:paddingTop="3dp"

@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.yc.enjoytouch.ye.R;
+import com.yc.enjoytouch.ye.utils.IdUtil;
 
 
 /**
@@ -40,33 +40,33 @@ public class YCTitleBar extends RelativeLayout{
     }
     
     private void init(Context context, AttributeSet attrs){
-        LayoutInflater.from(context).inflate(R.layout.widget_title_bar, this);
-        leftLayout = (RelativeLayout) findViewById(R.id.left_layout);
-        leftImage = (ImageView) findViewById(R.id.left_image);
-        rightLayout = (RelativeLayout) findViewById(R.id.right_layout);
-        rightImage = (ImageView) findViewById(R.id.right_image);
-        titleView = (TextView) findViewById(R.id.title);
-        titleLayout = (RelativeLayout) findViewById(R.id.root);
+        LayoutInflater.from(context).inflate(IdUtil.getIdByName(context,"layout","widget_title_bar"), this);
+        leftLayout = (RelativeLayout) findViewById(IdUtil.getIdByName(context,"id","left_layout"));
+        leftImage = (ImageView) findViewById(IdUtil.getIdByName(context,"id","left_image"));
+        rightLayout = (RelativeLayout) findViewById(IdUtil.getIdByName(context,"id","right_layout"));
+        rightImage = (ImageView) findViewById(IdUtil.getIdByName(context,"id","right_image"));
+        titleView = (TextView) findViewById(IdUtil.getIdByName(context,"id","title"));
+        titleLayout = (RelativeLayout) findViewById(IdUtil.getIdByName(context,"id","root"));
         
         parseStyle(context, attrs);
     }
     
     private void parseStyle(Context context, AttributeSet attrs){
         if(attrs != null){
-            TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.EaseTitleBar);
-            String title = ta.getString(R.styleable.EaseTitleBar_titleBarTitle);
+            TypedArray ta = context.obtainStyledAttributes(attrs, IdUtil.getIdsByName(context,"styleable","EaseTitleBar"));
+            String title = ta.getString(IdUtil.getIdByName(context,"styleable","EaseTitleBar_titleBarTitle"));
             titleView.setText(title);
             
-            Drawable leftDrawable = ta.getDrawable(R.styleable.EaseTitleBar_titleBarLeftImage);
+            Drawable leftDrawable = ta.getDrawable(IdUtil.getIdByName(context,"styleable","EaseTitleBar_titleBarLeftImage"));
             if (null != leftDrawable) {
                 leftImage.setImageDrawable(leftDrawable);
             }
-            Drawable rightDrawable = ta.getDrawable(R.styleable.EaseTitleBar_titleBarRightImage);
+            Drawable rightDrawable = ta.getDrawable(IdUtil.getIdByName(context,"styleable","EaseTitleBar_titleBarRightImage"));
             if (null != rightDrawable) {
                 rightImage.setImageDrawable(rightDrawable);
             }
         
-            Drawable background = ta.getDrawable(R.styleable.EaseTitleBar_titleBarBackground);
+            Drawable background = ta.getDrawable(IdUtil.getIdByName(context,"styleable","EaseTitleBar_titleBarBackground"));
             if(null != background) {
                 titleLayout.setBackgroundDrawable(background);
             }

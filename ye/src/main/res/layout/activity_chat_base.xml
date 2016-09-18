@@ -18,10 +18,14 @@
         android:layout_above="@+id/input_menu"
         android:layout_below="@id/title_bar" >
 
-        <!--<com.yc.enjoytouch.ye.widgit.EaseChatMessageList-->
+        <!--<com.yc.enjoytouch.ye.widgit.YCChatMessageList-->
             <!--android:id="@+id/message_list"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="match_parent" />-->
+        <RelativeLayout
+            android:id="@+id/list_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></RelativeLayout>
 
         <com.yc.enjoytouch.ye.widgit.YCVoiceRecorderView
             android:id="@+id/voice_recorder"

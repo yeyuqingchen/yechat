@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.yc.enjoytouch.ye.R;
 import com.yc.enjoytouch.ye.utils.DensityUtil;
+import com.yc.enjoytouch.ye.utils.IdUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +44,12 @@ public class YCChatExtendMenu extends GridView{
     
     private void init(Context context, AttributeSet attrs){
         this.context = context;
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.EaseChatExtendMenu);
-        int numColumns = ta.getInt(R.styleable.EaseChatExtendMenu_numColumns, 4);
+//        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.EaseChatExtendMenu);
+        TypedArray ta = context.obtainStyledAttributes(attrs, IdUtil.getIdsByName(context,"styleable","EaseChatExtendMenu"));
+
+//        int numColumns = ta.getInt(R.styleable.EaseChatExtendMenu_numColumns, 4);
+        int numColumns = ta.getInt(IdUtil.getIdByName(context,"styleable","EaseChatExtendMenu_numColumns"), 4);
+
         ta.recycle();
         
         setNumColumns(numColumns);
@@ -164,9 +168,16 @@ public class YCChatExtendMenu extends GridView{
         }
 
         private void init(Context context, AttributeSet attrs) {
-            LayoutInflater.from(context).inflate(R.layout.chat_menu_item, this);
-            imageView = (ImageView) findViewById(R.id.image);
-            textView = (TextView) findViewById(R.id.text);
+//            LayoutInflater.from(context).inflate(R.layout.chat_menu_item, this);
+            LayoutInflater.from(context).inflate(IdUtil.getIdByName(context,"layout","chat_menu_item"), this);
+
+//            imageView = (ImageView) findViewById(R.id.image);
+            imageView = (ImageView) findViewById(IdUtil.getIdByName(context,"id","image"));
+
+
+//            textView = (TextView) findViewById(R.id.text);
+            textView = (TextView) findViewById(IdUtil.getIdByName(context,"id","text"));
+
         }
 
         public void setImage(int resid) {

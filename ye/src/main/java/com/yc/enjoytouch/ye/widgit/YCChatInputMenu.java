@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.yc.enjoytouch.ye.R;
 import com.yc.enjoytouch.ye.bean.YCDefaultEmojiconDatas;
+import com.yc.enjoytouch.ye.utils.IdUtil;
 import com.yc.enjoytouch.ye.utils.YCEmojicon;
 import com.yc.enjoytouch.ye.utils.YCEmojiconGroupEntity;
 import com.yc.enjoytouch.ye.utils.YCSmileUtils;
@@ -57,13 +57,24 @@ public class YCChatInputMenu extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
-        layoutInflater.inflate(R.layout.widget_chat_input_menu, this);
-        primaryMenuContainer = (FrameLayout) findViewById(R.id.primary_menu_container);
-        emojiconMenuContainer = (FrameLayout) findViewById(R.id.emojicon_menu_container);
-        chatExtendMenuContainer = (FrameLayout) findViewById(R.id.extend_menu_container);
+//        layoutInflater.inflate(R.layout.widget_chat_input_menu, this);
+        layoutInflater.inflate(IdUtil.getIdByName(context,"layout","widget_chat_input_menu"), this);
+
+
+//        primaryMenuContainer = (FrameLayout) findViewById(R.id.primary_menu_container);
+        primaryMenuContainer = (FrameLayout) findViewById(IdUtil.getIdByName(context,"id","primary_menu_container"));
+
+//        emojiconMenuContainer = (FrameLayout) findViewById(R.id.emojicon_menu_container);
+        emojiconMenuContainer = (FrameLayout) findViewById(IdUtil.getIdByName(context,"id","emojicon_menu_container"));
+
+//        chatExtendMenuContainer = (FrameLayout) findViewById(R.id.extend_menu_container);
+        chatExtendMenuContainer = (FrameLayout) findViewById(IdUtil.getIdByName(context,"id","extend_menu_container"));
+
+
 
          // 扩展按钮栏
-         chatExtendMenu = (YCChatExtendMenu) findViewById(R.id.extend_menu);
+//         chatExtendMenu = (YCChatExtendMenu) findViewById(R.id.extend_menu);
+        chatExtendMenu = (YCChatExtendMenu) findViewById(IdUtil.getIdByName(context,"id","extend_menu"));
         
 
     }
@@ -79,16 +90,19 @@ public class YCChatInputMenu extends LinearLayout {
         }
         // 主按钮菜单栏,没有自定义的用默认的
         if(chatPrimaryMenu == null){
-            chatPrimaryMenu = (YCChatPrimaryMenuBase) layoutInflater.inflate(R.layout.layout_chat_primary_menu, null);
+//            chatPrimaryMenu = (YCChatPrimaryMenuBase) layoutInflater.inflate(R.layout.layout_chat_primary_menu, null);
+            chatPrimaryMenu = (YCChatPrimaryMenuBase) layoutInflater.inflate(IdUtil.getIdByName(context,"layout","layout_chat_primary_menu"), null);
         }
         primaryMenuContainer.addView(chatPrimaryMenu);
 
         // 表情栏，没有自定义的用默认的
         if(emojiconMenu == null){
-            emojiconMenu = (YCEmojiconMenu) layoutInflater.inflate(R.layout.layout_emojicon_menu, null);
+//            emojiconMenu = (YCEmojiconMenu) layoutInflater.inflate(R.layout.layout_emojicon_menu, null);
+            emojiconMenu = (YCEmojiconMenu) layoutInflater.inflate(IdUtil.getIdByName(context,"layout","layout_emojicon_menu"), null);
             if(emojiconGroupList == null){
                 emojiconGroupList = new ArrayList<YCEmojiconGroupEntity>();
-                emojiconGroupList.add(new YCEmojiconGroupEntity(R.drawable.ee_1,  Arrays.asList(YCDefaultEmojiconDatas.getData())));
+//                emojiconGroupList.add(new YCEmojiconGroupEntity(R.drawable.ee_1,  Arrays.asList(YCDefaultEmojiconDatas.getData())));
+                emojiconGroupList.add(new YCEmojiconGroupEntity(IdUtil.getIdByName(context,"drawable","ee_1"),  Arrays.asList(YCDefaultEmojiconDatas.getData())));
             }
             ((YCEmojiconMenu)emojiconMenu).init(emojiconGroupList);
         }
