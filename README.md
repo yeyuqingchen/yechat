@@ -2,29 +2,8 @@
    enjoytouch-android-yechen(叶晨)
    
    1.使用请先添加依赖 compile 'com.github.yeyuqingchen:yechat:-SNAPSHOT'
-   2.给出例子源码：（有疑问请联系QQ：398518700）
+   2.写一个Activity继承抽象类ChatBaseActivitys  给出例子源码：（有疑问请联系QQ：398518700）
       
-import android.content.Intent;
-import android.text.Spannable;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.yc.enjoytouch.ye.ui.ChatBaseActivity;
-import com.yc.enjoytouch.ye.utils.YCEmojicon;
-import com.yc.enjoytouch.ye.utils.YCEmojiconGroupEntity;
-import com.yc.enjoytouch.ye.utils.YCSmileUtils;
-
-import java.util.ArrayList;
-import java.util.List;
-
-
-public class ChatYeActivity extends ChatBaseActivity {
-    //测试
 
     @Override
     protected void wantToDo() {
@@ -163,6 +142,6 @@ public class ChatYeActivity extends ChatBaseActivity {
         mydata.add("发送大表情了 名称:"+name+"  id:"+identityCode);
         myadapter.notifyDataSetChanged();
     }
-}
+
    
      
