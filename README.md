@@ -63,11 +63,12 @@
         initMessageList();
     }
 
-    //填充消息列表 一个容器想加哪种列表自己加
+
+    //----这个方法是一个简单的加消息列表的例子,可以参考 做自己的消息列表---------------------- //list_container是一个容器，通过add方法加入列表之类的控件 如下
     List<String> mydata;
     BaseAdapter myadapter;
     private void initMessageList(){
-        //填充消息列表 一个容器想加哪种列表自己加
+        //填充消息列表 一个容器想加哪种列表自己加上
         mydata=new ArrayList<>();
         ListView listView=new ListView(this);
         myadapter=new BaseAdapter() {
@@ -97,6 +98,7 @@
         listView.setAdapter(myadapter);
         list_container.addView(listView);
     }
+    //------------------------------------------------------------------------
 
 
 
