@@ -10,7 +10,7 @@
    
    给出例子源码：（有疑问请联系QQ：398518700）
       
-
+    //这个方法里你可以做你想做的事
     @Override
     protected void wantToDo() {
         titleBar.setTitle("YC");//设置标题
