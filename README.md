@@ -1,7 +1,11 @@
 # yechat 
    enjoytouch-android-yechen(叶晨)
    
-   1.使用请先添加依赖 compile 'com.github.yeyuqingchen:yechat:-SNAPSHOT'
+   1.使用请先添加gradle依赖:
+   
+       compile 'com.github.yeyuqingchen:yechat:-SNAPSHOT'
+       
+       
    2.写一个Activity继承抽象类ChatBaseActivitys  给出例子源码：（有疑问请联系QQ：398518700）
       
 
