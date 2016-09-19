@@ -6,7 +6,7 @@
        compile 'com.github.yeyuqingchen:yechat:-SNAPSHOT'
        
        
-   2.写一个Activity继承抽象类ChatBaseActivitys  给出例子源码：（有疑问请联系QQ：398518700）
+   2.写一个Activity继承抽象类ChatBaseActivity  给出例子源码：（有疑问请联系QQ：398518700）
       
 
     @Override
