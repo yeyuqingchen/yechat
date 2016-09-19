@@ -64,7 +64,9 @@
     }
 
 
-    //----这个方法是一个简单的加消息列表的例子,可以参考 做自己的消息列表---------------------- //list_container是一个容器，通过add方法加入列表之类的控件 如下
+    //----这个方法是一个简单的加消息列表的例子,可以参考 做自己的消息列表---------------------- 
+    /**list_container是一个容器，
+    通过add方法加入列表之类的控件 如下： */
     List<String> mydata;
     BaseAdapter myadapter;
     private void initMessageList(){
