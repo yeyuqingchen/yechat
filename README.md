@@ -28,9 +28,12 @@
       
        
        
-   3.写一个Activity继承抽象类ChatBaseActivity(ps:已填充布局,不可以再执行setContentView方法)  
+   3.写一个Activity继承抽象类ChatBaseActivity
    
-   给出例子源码：（有疑问请联系QQ：398518700）
+     (ps:已填充布局,不可以再执行setContentView方法,不用再重写onCreate方法,
+        在wantToDo方法里写你想做的事,否则无效果……………………………………)
+   
+     给出例子源码：（有疑问请联系QQ：398518700）
       
     //这个方法里你可以做你想做的事
     @Override
