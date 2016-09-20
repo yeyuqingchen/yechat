@@ -2,6 +2,7 @@
    enjoytouch-android-yechen(叶晨)
    
    1.使用请先添加gradle依赖:
+   
       (1) 根目录gradle加入：
       
           allprojects {
