@@ -16,7 +16,7 @@
       
           compile 'com.github.yeyuqingchen:yechat:-SNAPSHOT'
        
- # 2.加入权限：
+# 2.加入权限：
    
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -39,7 +39,7 @@
       
        
        
-  #3.写一个Activity继承抽象类ChatBaseActivity
+# 3.写一个Activity继承抽象类ChatBaseActivity
    
      (ps:已填充布局,不可以再执行setContentView方法,不用再重写onCreate方法,
         在wantToDo方法里写你想做的事,否则无效果……………………………………)
